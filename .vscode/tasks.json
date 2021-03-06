@@ -1,0 +1,32 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile protos",
+            "command": "protoc",
+            "type": "shell",
+            "args": [
+                "--dart_out=",
+                "${input:dart_out}",
+                "--Iprotos",
+                "${input:protos_in}"
+            ],
+        },
+    ],
+    "inputs": [
+        {
+            "id": "dart_out",
+            "description": "Compiled protos folder:",
+            "default": "lib/generated",
+            "type": "promptString"
+        },
+        {
+            "id": "protos_in",
+            "description": "Protos folder:",
+            "default": "protos/hello.proto",
+            "type": "promptString"
+        }
+    ],
+}
